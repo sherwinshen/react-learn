@@ -1,0 +1,64 @@
+{
+  "cities": [
+    {
+      "id": "39c9",
+      "cityName": "Shanghai",
+      "country": "China",
+      "emoji": "🇨🇳",
+      "date": "2024-02-28T14:38:13.290Z",
+      "notes": "",
+      "position": {
+        "lat": "31.22689446881399",
+        "lng": "121.38793945312501"
+      }
+    },
+    {
+      "id": "6349",
+      "cityName": "Tokyo",
+      "country": "Japan",
+      "emoji": "🇯🇵",
+      "date": "Sat Mar 02 2024 16:23:20 GMT+0800 (中国标准时间)",
+      "notes": "",
+      "position": {
+        "lat": 35.67514743608467,
+        "lng": 139.57031250000003
+      }
+    },
+    {
+      "id": "355d",
+      "cityName": "Ghan",
+      "country": "Australia",
+      "emoji": "🇦🇺",
+      "date": "Sat Mar 02 2024 16:25:26 GMT+0800 (中国标准时间)",
+      "notes": "",
+      "position": {
+        "lat": -25.958044673317843,
+        "lng": 133.94531250000003
+      }
+    },
+    {
+      "id": "5bfe",
+      "cityName": "Amgaon",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "Sat Mar 02 2024 16:25:32 GMT+0800 (中国标准时间)",
+      "notes": "",
+      "position": {
+        "lat": 21.289374355860424,
+        "lng": 80.33203125
+      }
+    },
+    {
+      "id": "9c2c",
+      "cityName": "Kecamatan Langgam",
+      "country": "Indonesia",
+      "emoji": "🇮🇩",
+      "date": "Sat Mar 02 2024 16:25:44 GMT+0800 (中国标准时间)",
+      "notes": "",
+      "position": {
+        "lat": 0,
+        "lng": 101.6015625
+      }
+    }
+  ]
+}
