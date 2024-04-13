@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import SearchOrder from "../features/order/SearchOrder";
 import UserName from "../features/user/UserName";
+import SearchOrder from "../features/order/SearchOrder";
 
 function Header() {
   return (
@@ -8,8 +8,10 @@ function Header() {
       <Link to="/" className="tracking-widest">
         Fast React Pizza Co.
       </Link>
+
       <SearchOrder />
-      <UserName />
+
+      <UserName></UserName>
     </header>
   );
 }

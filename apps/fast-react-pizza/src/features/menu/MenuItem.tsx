@@ -1,8 +1,29 @@
+import { useAppDispatch, useAppSelector } from "../../store";
+import { ButtonType, PizzaItemT } from "../../type";
 import Button from "../../ui/Button";
 import { formatCurrency } from "../../utils/helpers";
+import DeleteItem from "../cart/DeleteItem";
+import UpdateItemQuantity from "../cart/UpdateItemQuantity";
+import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
 
-function MenuItem({ pizza }) {
+function MenuItem({ pizza }: { pizza: PizzaItemT }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+
+  const currentQuantity = useAppSelector(getCurrentQuantityById(id));
+  const isInCart = currentQuantity > 0;
+
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = () => {
+    const newItem = {
+      pizzaId: id,
+      name,
+      quantity: 1,
+      unitPrice,
+      totalPrice: unitPrice * 1,
+    };
+    dispatch(addItem(newItem));
+  };
 
   return (
     <li className="flex gap-4 py-2">
@@ -25,7 +46,21 @@ function MenuItem({ pizza }) {
             </p>
           )}
 
-          <Button type="small">Add to cart</Button>
+          {!soldOut && !isInCart && (
+            <Button type={ButtonType.small} onClick={handleAddToCart}>
+              Add to cart
+            </Button>
+          )}
+
+          {isInCart && (
+            <div className="flex items-center gap-3 sm:gap-8">
+              <UpdateItemQuantity
+                pizzaId={id}
+                currentQuantity={currentQuantity}
+              />
+              <DeleteItem pizzaId={id} />
+            </div>
+          )}
         </div>
       </div>
     </li>

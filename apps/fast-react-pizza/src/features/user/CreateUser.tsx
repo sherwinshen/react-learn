@@ -1,20 +1,22 @@
 import { useState } from "react";
-import Button from "../../ui/Button";
-import { useDispatch } from "react-redux";
-import { updateUserName } from "./userSlice";
 import { useNavigate } from "react-router-dom";
 
+import Button from "../../ui/Button";
+import { ButtonType } from "../../type";
+import { useAppDispatch } from "../../store";
+import { updateName } from "./userSlice";
+
 function CreateUser() {
-  const [userName, setUserName] = useState("");
-  const dispatch = useDispatch();
+  const [username, setUsername] = useState<string>("");
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    if (!userName) return;
-    dispatch(updateUserName(userName));
+    if (!username) return;
+    dispatch(updateName(username));
     navigate("/menu");
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -25,14 +27,14 @@ function CreateUser() {
       <input
         type="text"
         placeholder="Your full name"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
         className="input mb-8 w-72"
       />
 
-      {userName !== "" && (
+      {username !== "" && (
         <div>
-          <Button type="primary">Start ordering</Button>
+          <Button type={ButtonType.primary}>Start ordering</Button>
         </div>
       )}
     </form>
