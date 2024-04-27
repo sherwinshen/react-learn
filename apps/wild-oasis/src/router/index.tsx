@@ -9,6 +9,8 @@ import Settings from "../pages/Settings";
 import Account from "../pages/Account";
 import PageNotFound from "../pages/PageNotFound";
 import Login from "../pages/Login";
+import Booking from "../pages/Booking";
+import CheckIn from "../pages/CheckIn";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: "/bookings",
         element: <Bookings />,
+      },
+      {
+        path: "/booking/:bookingId",
+        element: <Booking />,
+      },
+      {
+        path: "/check-in/:bookingId",
+        element: <CheckIn />,
       },
       {
         path: "/cabins",

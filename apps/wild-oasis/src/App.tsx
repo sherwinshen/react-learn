@@ -10,7 +10,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
       <ReactQueryDevtools />
       <Toaster />
       <GlobalStyles />

@@ -7,4 +7,6 @@ export default queryClient;
 export const QUERY_KEYS = {
   settings: "settings",
   cabins: "cabins",
+  bookings: "bookings",
+  booking: "booking",
 };
