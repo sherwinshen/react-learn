@@ -11,10 +11,15 @@ import PageNotFound from "../pages/PageNotFound";
 import Login from "../pages/Login";
 import Booking from "../pages/Booking";
 import CheckIn from "../pages/CheckIn";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
-    element: <AppLayout />,
+    element: (
+      <ProtectedRoute>
+        <AppLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,

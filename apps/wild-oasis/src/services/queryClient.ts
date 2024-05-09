@@ -9,4 +9,5 @@ export const QUERY_KEYS = {
   cabins: "cabins",
   bookings: "bookings",
   booking: "booking",
+  user: "user",
 };
