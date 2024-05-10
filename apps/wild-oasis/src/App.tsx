@@ -6,15 +6,18 @@ import { Toaster } from "react-hot-toast";
 import router from "./router";
 import queryClient from "./services/queryClient";
 import GlobalStyles from "./styles/GlobalStyles";
+import ThemeProvider from "./context/ThemeProvider";
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools />
-      <Toaster />
-      <GlobalStyles />
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools />
+        <Toaster />
+        <GlobalStyles />
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 
