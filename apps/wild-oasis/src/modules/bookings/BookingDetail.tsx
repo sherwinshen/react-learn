@@ -11,11 +11,11 @@ import { useMoveBack } from "../../hooks/useMoveBack";
 import BookingDataBox from "./BookingDataBox";
 import Button from "../../components/button/Button";
 import ButtonGroup from "../../components/button/ButtonGroup";
-import { HiArrowUpOnSquare } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { useCheckOut } from "../check-in-out/useCheckInOut";
 import Modal from "../../components/Modal";
 import ConfirmDelete from "../../components/ConfirmDelete";
+import Empty from "../../components/Empty";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -33,6 +33,8 @@ function BookingDetail() {
   const { id: bookingId, status = BOOKING_STATUS.unconfirmed } = booking || {};
 
   if (isLoading) return <Spinner />;
+
+  if (!booking) return <Empty resource="booking" />;
 
   return (
     <>

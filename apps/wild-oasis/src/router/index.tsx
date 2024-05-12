@@ -1,4 +1,6 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
+
 import AppLayout from "../pages/AppLayout";
 import Dashboard from "../pages/Dashboard";
 import Bookings from "../pages/Bookings";
@@ -12,64 +14,74 @@ import Login from "../pages/Login";
 import Booking from "../pages/Booking";
 import CheckIn from "../pages/CheckIn";
 import ProtectedRoute from "./ProtectedRoute";
+import ErrorFallback from "../pages/components/ErrorFallback";
 
 const router = createBrowserRouter([
   {
     element: (
-      <ProtectedRoute>
-        <AppLayout />
-      </ProtectedRoute>
+      <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => window.location.replace("/")}>
+        <Outlet />
+      </ErrorBoundary>
     ),
     children: [
       {
-        index: true,
-        element: <Navigate replace to="/dashboard" />,
+        element: (
+          <ProtectedRoute>
+            <AppLayout />
+          </ProtectedRoute>
+        ),
+        children: [
+          {
+            index: true,
+            element: <Navigate replace to="/dashboard" />,
+          },
+          {
+            path: "/dashboard",
+            element: <Dashboard />,
+          },
+          {
+            path: "/bookings",
+            element: <Bookings />,
+          },
+          {
+            path: "/booking/:bookingId",
+            element: <Booking />,
+          },
+          {
+            path: "/check-in/:bookingId",
+            element: <CheckIn />,
+          },
+          {
+            path: "/cabins",
+            element: <Cabins />,
+          },
+          {
+            path: "/cabins/add",
+            element: <CabinAdd />,
+          },
+          {
+            path: "/users",
+            element: <Users />,
+          },
+          {
+            path: "/settings",
+            element: <Settings />,
+          },
+          {
+            path: "/account",
+            element: <Account />,
+          },
+        ],
       },
       {
-        path: "/dashboard",
-        element: <Dashboard />,
+        path: "login",
+        element: <Login />,
       },
       {
-        path: "/bookings",
-        element: <Bookings />,
-      },
-      {
-        path: "/booking/:bookingId",
-        element: <Booking />,
-      },
-      {
-        path: "/check-in/:bookingId",
-        element: <CheckIn />,
-      },
-      {
-        path: "/cabins",
-        element: <Cabins />,
-      },
-      {
-        path: "/cabins/add",
-        element: <CabinAdd />,
-      },
-      {
-        path: "/users",
-        element: <Users />,
-      },
-      {
-        path: "/settings",
-        element: <Settings />,
-      },
-      {
-        path: "/account",
-        element: <Account />,
+        path: "*",
+        element: <PageNotFound />,
       },
     ],
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "*",
-    element: <PageNotFound />,
   },
 ]);
 
