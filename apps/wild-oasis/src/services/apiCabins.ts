@@ -16,7 +16,7 @@ export async function fetchCreateCabin(newCabin: CabinParamT) {
   const hasImagePath = typeof newCabin.image === "string";
 
   // 1. Create cabin
-  const imageName = hasImagePath ? "" : `${Math.random()}-${newCabin.image?.name}`.replaceAll("/", "");
+  const imageName = hasImagePath ? "" : `${Math.random()}-${(newCabin.image as File)?.name}`.replaceAll("/", "");
   const imagePath = hasImagePath ? newCabin.image : `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
   const { data, error } = await supabase
     .from("cabins")
