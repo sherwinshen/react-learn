@@ -1,0 +1,11 @@
+.red {
+  color: red;
+}
+
+.red .blue {
+   color: blue;
+}
+
+.font-bold {
+  font-weight: bold;
+}
